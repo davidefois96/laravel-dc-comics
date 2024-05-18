@@ -5,48 +5,78 @@
 @section('content')
 
 
-<div class="container mt-5">
-
-    <div class="row row-cols-2 ">
-
-
-
-        @foreach ($comics as $comic )
-
-        <div class="col d-flex  justify-content-center ">
-
-            <div class="card mb-5 w-50 bg-dark text-center p-2  text-white  border-1 border-danger ">
-
-
-
-                <img class="card-img-top" src="{{$comic->thumb}}" alt="{{$comic->title}}">
 
 
 
 
-                <div class="card-body">
-                    <h4 class="mb-3">{{ $comic->title}}</h4>
-                    <h6 class="mb-4">Series: {{ $comic->series }}</h6>
-                    <p>Type: {{ $comic->type}}</p>
-                    <p>Date: {{ $comic->sale_date}}</p>
-                    <p>Price: {{ $comic->sale_date}}</p>
-                    <p class="mb-2">Date: {{$comic->sale_date}}</p>
+<div class="container py-5">
 
+    @if (session('cancel'))
 
-                    <a href="{{route('comics.show', $comic)}}" class="btn btn-danger ">Details</a>
-
-                </div>
-
-
-            </div>
+        <div class="alert alert-success mb-3 " role="alert">
+        {{session('cancel')}}
         </div>
 
-        @endforeach
+    @endif
 
 
 
+    <table class="table  table-dark ">
+        <thead>
+          <tr class="text-center fs-5">
+            <th scope="col" class="ps-4">Id</th>
+            <th scope="col" class="px-5">Immagine</th>
+            <th scope="col" class="px-5">Titolo</th>
+            <th scope="col" class="px-5">Tipo</th>
+            <th scope="col" class="px-5">Serie</th>
+            <th scope="col" class="px-5">Prezzo</th>
+            <th scope="col" class="px-5">Uscita</th>
+            <th scope="col" class="px-5">Comandi</th>
 
-    </div>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach ($comics as $comic )
+
+              <tr class="py-3 align-middle text-center">
+                <th class="fs-4 ps-4" scope="row">{{$comic->id}}</th>
+                <td><img style="width: 80px" src="{{$comic->thumb}}" alt="{{$comic->title}}"></td>
+                <td >{{$comic->title}}</td>
+                <td>{{$comic->type}}</td>
+                <td>{{$comic->series}}</td>
+                <td>{{$comic->price}}</td>
+                <td>{{$comic->sale_date}}</td>
+
+                <td class="py-2">
+                    <div class="d-flex">
+
+
+                        <div><a href="{{route('comics.show', $comic)}}" class="btn btn-primary me-2"><i class="fa-solid fa-eye"></i></a></div>
+
+
+                        <a href="{{route('comics.edit', $comic)}}" class="btn btn-warning me-2"><i class="fa-solid fa-pencil"></i></a>
+
+                        <form action="{{route('comics.destroy', $comic)}}" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare {{$comic->title}}?')">
+                            @csrf
+                            @method('DELETE')
+
+
+                            <button type="submit" class="btn btn-danger   "><i class="fa-solid fa-trash"></i></button>
+
+                        </form>
+
+
+                    </div>
+
+                </td>
+              </tr>
+
+            @endforeach
+
+
+        </tbody>
+    </table>
+
 
 
 

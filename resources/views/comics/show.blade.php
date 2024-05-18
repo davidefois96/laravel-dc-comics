@@ -5,36 +5,119 @@
 @section('content')
 
 
-<div class="d-flex justify-content-center my-5">
+<div class="d-flex justify-content-around p-5  text-white ">
 
-    <div class="card mb-5 w-25 bg-dark text-center p-2  text-white  border-1 border-danger ">
+    <div class=" w-50">
 
+     <h1 class="mb-5 text-center ">Copertina:</h1>
 
-
-        <img class="card-img-top" src="{{$comic->thumb}}" alt="{{$comic->title}}">
-
-
-
-
-        <div class="card-body">
-            <h4 class="mb-3">{{ $comic->title}}</h4>
-            <h6 class="mb-4">Series: {{ $comic->series }}</h6>
-            <p>Type: {{ $comic->type}}</p>
-            <p>Date: {{ $comic->sale_date}}</p>
-            <p>Price: {{ $comic->sale_date}}</p>
-            <p class="mb-2">Date: {{$comic->sale_date}}</p>
-
-
-            {{-- <a href="{{route('movieDetails',['id' => $movie['id']])}}" class="btn btn-danger ">Details</a> --}}
-
-        </div>
+     <img src="{{$comic->thumb}}" alt="{{$comic->title}}">
 
 
     </div>
 
 
+    <div class=" w-25">
+
+
+      <h1 class="mb-5 text-center">Dettagli:</h1>
+
+
+      <div class="d-flex justify-content-between ">
+
+        <h2 class="mb-5 w-75 ">{{ $comic->title}}</h2>
+
+        <div class="mb-5" >
+
+            <a href="{{route('comics.edit', $comic)}}" class="btn btn-warning mb-3"><i class="fa-solid fa-pencil"></i></a>
+
+            <form action="{{route('comics.destroy', $comic)}}" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare {{$comic->title}}?')">
+                @csrf
+                @method('DELETE')
+
+
+                <button type="submit" class="btn btn-danger   "><i class="fa-solid fa-trash"></i></button>
+
+            </form>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+      <div class="d-flex justify-content-between ">
+        <div>
+            <h3>Serie:</h3>
+            <p class="mb-5">{{ $comic->series}}</p>
+        </div>
+        <div>
+
+            <h3>Tipo:</h3>
+            <p class="mb-5">{{ $comic->type}}</p>
+
+        </div>
+
+
+      </div>
+
+      <h3>Descrizione:</h3>
+      <p class="mb-5">{{$comic->description}}</p>
+      <div class="d-flex justify-content-between ">
+
+        <div>
+            <h3>Prezzo:</h3>
+            <p class="mb-5">{{ $comic->price}}</p>
+
+        </div>
+
+        <div>
+            <h3>Uscita:</h3>
+            <p class="mb-5">{{$comic->sale_date}}</p>
+
+        </div>
+
+
+
+      </div>
+
+
+      @php
+          $artists=explode(', ', $comic->artists);
+          $writers=explode(', ', $comic->writers);
+      @endphp
+
+
+      <div class="d-flex justify-content-between ">
+        <div>
+            <h3>Artisti:</h3>
+            <ul>
+                @foreach ($artists as $artist)
+                    <li>{{ $artist }}</li>
+                @endforeach
+            </ul>
+        </div>
+        <div>
+            <h3>Scrittori:</h3>
+            <ul>
+                @foreach ($writers as $writer)
+                    <li>{{ $writer }}</li>
+                @endforeach
+            </ul>
+        </div>
+      </div>
+
+    </div>
+
 
 </div>
+
+
+
+
 
 
 @endsection
