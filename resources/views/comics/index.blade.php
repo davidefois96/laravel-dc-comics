@@ -21,7 +21,7 @@
 
 
 
-    <table class="table  table-dark ">
+    <table class="table  table-dark opacity-75 mb-5">
         <thead>
           <tr class="text-center fs-5">
             <th scope="col" class="ps-4">Id</th>
@@ -48,20 +48,20 @@
                 <td>{{$comic->sale_date}}</td>
 
                 <td class="py-2">
-                    <div class="d-flex">
+                    <div class="d-flex ">
 
 
-                        <div><a href="{{route('comics.show', $comic)}}" class="btn btn-primary me-2"><i class="fa-solid fa-eye"></i></a></div>
+                        <div><a href="{{route('comics.show', $comic)}}" class="btn border-1  border-secondary-subtle me-2 text-white"><i class="fa-solid fa-eye"></i></a></div>
 
 
-                        <a href="{{route('comics.edit', $comic)}}" class="btn btn-warning me-2"><i class="fa-solid fa-pencil"></i></a>
+                        <a href="{{route('comics.edit', $comic)}}" class="btn  border-1  border-secondary-subtle me-2 text-white"><i class="fa-solid fa-pencil"></i></a>
 
                         <form action="{{route('comics.destroy', $comic)}}" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare {{$comic->title}}?')">
                             @csrf
                             @method('DELETE')
 
 
-                            <button type="submit" class="btn btn-danger   "><i class="fa-solid fa-trash"></i></button>
+                            <button type="submit" class="btn border-1  border-secondary-subtle text-white "><i class="fa-solid fa-trash"></i></button>
 
                         </form>
 

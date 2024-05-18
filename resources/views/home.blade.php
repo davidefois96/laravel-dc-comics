@@ -31,7 +31,7 @@
 
     </div>
 
-    <h3 class="my-5 text-center ">Dalla voce Comandi all' interno della lista sarà possibile interagire col singolo volume andando a visualizzarne i dettagli, modificarne il contenuto e se necessario o cancellarlo definitivamente.</h3>
+    <h3 class="my-5 text-center ">Dalla voce Comandi all' interno della lista sarà possibile interagire col singolo volume andando a visualizzarne i dettagli, modificarne il contenuto e se necessario cancellarlo definitivamente.</h3>
 
 
 

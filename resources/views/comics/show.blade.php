@@ -29,14 +29,14 @@
 
         <div class="mb-5" >
 
-            <a href="{{route('comics.edit', $comic)}}" class="btn btn-warning mb-3"><i class="fa-solid fa-pencil"></i></a>
+            <a href="{{route('comics.edit', $comic)}}" class="btn border-1  border-secondary-subtle text-white mb-2 "><i class="fa-solid fa-pencil"></i></a>
 
             <form action="{{route('comics.destroy', $comic)}}" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare {{$comic->title}}?')">
                 @csrf
                 @method('DELETE')
 
 
-                <button type="submit" class="btn btn-danger   "><i class="fa-solid fa-trash"></i></button>
+                <button type="submit" class="btn border-1  border-secondary-subtle me-2 text-white"><i class="fa-solid fa-trash"></i></button>
 
             </form>
 

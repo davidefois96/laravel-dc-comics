@@ -14,7 +14,10 @@ class ComicsController extends Controller
     public function index()
     {
 
-        $comics = Comic::all();
+        $comics = Comic::orderBy('id', 'desc')->get();
+
+
+
 
 
 
