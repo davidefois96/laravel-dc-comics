@@ -9,7 +9,9 @@
 
 
 
-<div class="container py-5">
+<div class="container py-5 text-center text-white ">
+
+    <h1 class="mb-5">Lista dei volumi</h1>
 
     @if (session('cancel'))
 
@@ -21,7 +23,7 @@
 
 
 
-    <table class="table  table-dark opacity-75 mb-5">
+    <table class="table table-dark opacity-75 mb-5">
         <thead>
           <tr class="text-center fs-5">
             <th scope="col" class="ps-4">Id</th>
@@ -51,7 +53,7 @@
                     <div class="d-flex ">
 
 
-                        <div><a href="{{route('comics.show', $comic)}}" class="btn border-1  border-secondary-subtle me-2 text-white"><i class="fa-solid fa-eye"></i></a></div>
+                        <div><a href="{{route('comics.show', $comic)}}" class="btn border-1  border-secondary-subtle me-2 text-white" ><i class="fa-solid fa-eye"></i></a></div>
 
 
                         <a href="{{route('comics.edit', $comic)}}" class="btn  border-1  border-secondary-subtle me-2 text-white"><i class="fa-solid fa-pencil"></i></a>
