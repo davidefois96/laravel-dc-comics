@@ -17,9 +17,11 @@
 
        <div class="d-flex">
 
-        <a class="btn btn-dark border-1  border-secondary-subtle  me-2 " href="{{route('home')}}">Home</a>
-        <a class="btn btn-dark border-1  border-secondary-subtle me-2 " href="{{route('comics.index')}}">Lista volumi</a>
-        <a class="btn btn-dark border-1  border-secondary-subtle " href="{{route('comics.create')}}">Aggiungi</a>
+        <a class="{{ Route::currentRouteName() == 'home'   ? 'btn btn-dark border-1  border-secondary-subtle  me-2 active' : 'btn btn-dark border-1  border-secondary-subtle  me-2' }} " href="{{route('home')}}">Home</a>
+
+        <a class="{{ Route::currentRouteName() == 'comics.index'   ? 'btn btn-dark border-1  border-secondary-subtle  me-2 active' : 'btn btn-dark border-1  border-secondary-subtle  me-2' }}" href="{{route('comics.index')}}">Lista volumi</a>
+
+        <a class="{{ Route::currentRouteName() == 'comics.create'   ? 'btn btn-dark border-1  border-secondary-subtle  me-2 active' : 'btn btn-dark border-1  border-secondary-subtle  me-2' }}" href="{{route('comics.create')}}">Aggiungi</a>
 
 
 
